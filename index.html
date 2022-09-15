@@ -10,11 +10,40 @@
     integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css">
+  <style>
+    button:hover {
+      background-color: gray;
+      color: aliceblue;
+    }
+  </style>
 </head>
 
 <body>
   <div class="container">
     <h1>Book list Projact</h1>
+    <form action="">
+      <div>
+        <label for="">Title</label>
+        <input type="text" id="title" placeholder="Book Name" class="u-full-width">
+      </div>
+      <div>
+        <label for="">Author</label>
+        <input type="text" id="author" placeholder="Author Name" class="u-full-width">
+      </div>
+      <div>
+        <label for="">#ISBN</label>
+        <input type="text" id="isbn" placeholder="ISBN of Book" class="u-full-width">
+      </div>
+      <button value="submit" type="submit" id="submit" class="u-full-width">Submit</button>
+    </form>
+    <table class="u-full-width">
+      <thead>
+        <th>Title</th>
+        <th>Author</th>
+        <th>#ISBN</th>
+      </thead>
+      <tbody id="book-list"></tbody>
+    </table>
 
   </div>
   <script src="test.js"></script>
