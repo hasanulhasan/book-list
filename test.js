@@ -8,6 +8,15 @@ class Book {
   }
 }
 
+class UI {
+  constructor() {
+
+  }
+  addBookList(book) {
+    console.log(book);
+  }
+}
+
 form.addEventListener('submit', newBook)
 
 function newBook(e) {
@@ -15,7 +24,9 @@ function newBook(e) {
   let author = document.getElementById('author').value;
   let isbn = document.getElementById('isbn').value;
   let book = new Book(title, author, isbn);
-  console.log(book);
+  // console.log(book);
+  let ui = new UI();
+  ui.addBookList(book)
 
   e.preventDefault();
 }
