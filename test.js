@@ -13,7 +13,19 @@ class UI {
 
   }
   addBookList(book) {
-    console.log(book);
+    let list = document.querySelector('#book-list');
+    let row = document.createElement('tr');
+    row.innerHTML = `
+    <td>${book.title}</td>
+    <td>${book.author}</td>
+    <td>${book.isbn}</td>
+    <a href="" class="delete">X</a>`
+    list.appendChild(row)
+  }
+  clearField() {
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('isbn').value = '';
   }
 }
 
@@ -26,7 +38,8 @@ function newBook(e) {
   let book = new Book(title, author, isbn);
   // console.log(book);
   let ui = new UI();
-  ui.addBookList(book)
+  ui.addBookList(book);
+  ui.clearField();
 
   e.preventDefault();
 }
