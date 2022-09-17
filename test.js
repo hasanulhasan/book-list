@@ -1,5 +1,5 @@
 let form = document.querySelector("#book-form")
-
+let bookList = document.querySelector('#book-list');
 class Book {
   constructor(title, author, isbn) {
     this.title = title;
@@ -38,9 +38,15 @@ class UI {
       document.querySelector('.alert').remove();
     }, 3000)
   }
+  deleteBookList(target) {
+    if (target.hasAttribute('href')) {
+      target.parentElement.remove();
+    }
+  }
 }
 
-form.addEventListener('submit', newBook)
+form.addEventListener('submit', newBook);
+bookList.addEventListener('click', deleteBook);
 
 function newBook(e) {
   let title = document.getElementById('title').value,
@@ -58,7 +64,12 @@ function newBook(e) {
     ui.clearField();
     ui.showAlert('Book Added', 'success');
   }
+  e.preventDefault();
+}
 
-
+function deleteBook(e) {
+  let ui = new UI();
+  ui.deleteBookList(e.target);
+  ui.showAlert('Book Removed', 'success');
   e.preventDefault();
 }
