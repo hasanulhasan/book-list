@@ -27,23 +27,36 @@ class UI {
     document.getElementById('author').value = '';
     document.getElementById('isbn').value = '';
   }
+  showAlert(message, className) {
+    let div = document.createElement('div');
+    div.className = `alert ${className}`;
+    div.appendChild(document.createTextNode(message));
+    let container = document.querySelector('.container');
+    let form = document.querySelector("#book-form");
+    container.insertBefore(div, form);
+    setInterval(function () {
+      document.querySelector('.alert').remove();
+    }, 3000)
+  }
 }
 
 form.addEventListener('submit', newBook)
 
 function newBook(e) {
-  let title = document.getElementById('title').value;
-  let author = document.getElementById('author').value;
-  let isbn = document.getElementById('isbn').value;
-  let book = new Book(title, author, isbn);
+  let title = document.getElementById('title').value,
+    author = document.getElementById('author').value,
+    isbn = document.getElementById('isbn').value;
 
+  let ui = new UI();
   if (title === '' || author === '' || isbn === '') {
-    alert('Your input is not valid')
+    // alert('Your input is not valid');
+    ui.showAlert('Please enter a valid input', 'error');
   }
   else {
-    let ui = new UI();
+    let book = new Book(title, author, isbn);
     ui.addBookList(book);
     ui.clearField();
+    ui.showAlert('Book Added', 'success');
   }
 
 
