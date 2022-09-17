@@ -36,10 +36,16 @@ function newBook(e) {
   let author = document.getElementById('author').value;
   let isbn = document.getElementById('isbn').value;
   let book = new Book(title, author, isbn);
-  // console.log(book);
-  let ui = new UI();
-  ui.addBookList(book);
-  ui.clearField();
+
+  if (title === '' || author === '' || isbn === '') {
+    alert('Your input is not valid')
+  }
+  else {
+    let ui = new UI();
+    ui.addBookList(book);
+    ui.clearField();
+  }
+
 
   e.preventDefault();
 }
