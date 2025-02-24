@@ -36,7 +36,7 @@ class UI {
     container.insertBefore(div, form);
     setInterval(function () {
       document.querySelector('.alert').remove();
-    }, 3000)
+    }, 5000)
   }
   deleteBookList(target) {
     if (target.hasAttribute('href')) {
